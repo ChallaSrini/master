@@ -15,5 +15,7 @@ sources:
             period: day         
       - name: tgt_population
         identifier: dim_mart_world_population
+      - name: tgt_population_typ1
+        identifier: dim_mart_world_population_typ1
 
 
