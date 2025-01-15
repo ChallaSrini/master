@@ -22,7 +22,7 @@
             s2.scd_key as upd_scd_key,
             s1.effective_from - INTERVAL 1 DAY as upd_effective_to
        from {{ ref('wrk_mart_world_population') }} s1
-  left join ic4_catalog.wrk_training.dim_mart_world_population s2
+  left join {{source("my_src","tgt_population")}} s2
          on s1.dim_cntry_key=s2.dim_cntry_key
         and s2.effective_to='9999-01-01'
       where s2.dim_cntry_key is null
