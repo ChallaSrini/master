@@ -1,0 +1,19 @@
+version: 2
+sources:
+  - name: my_src
+    schema: wrk_training
+    tables:
+      - name: src_population
+        identifier: world_population
+        loaded_at_field: edh_rec_cre_ts
+        freshness: 
+          error_after:
+            count: 365
+            period: day
+          warn_after:
+            count: 365
+            period: day         
+      - name: tgt_population
+        identifier: dim_mart_world_population
+
+

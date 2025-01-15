@@ -18,7 +18,7 @@ with wrld_popln as (
            CURRENT_TIMESTAMP() as load_datetime,
            {{ md5_hash(['country','effective_from'])}} as scd_key,
            {{ md5_hash(['population','yearly_change','net_change','density','land_area','migrants','fert_rate','med_age','urban_pop','world_share'])}} as compare_key
-      from ic4_catalog.wrk_training.world_population
+      from {{ source("my_src","src_population")}}
 )
 
 select * from wrld_popln
