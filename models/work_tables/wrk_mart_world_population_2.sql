@@ -45,7 +45,8 @@ select dim_cntry_key,
 	   effective_to,
 	   load_datetime,
 	   scd_key,
-	   compare_key
+	   compare_key,
+       'I' as upd_ins_flg
   from wrld_scd2 
   union all 
 select dim_cntry_key,
@@ -64,7 +65,8 @@ select dim_cntry_key,
 	   upd_effective_to as effective_to,
 	   load_datetime,
 	   upd_scd_key as scd_key,
-	   compare_key
+	   compare_key,
+       'U' as upd_ins_flg
   from wrld_scd2 
  where not upd_scd_key is null ) 
 
