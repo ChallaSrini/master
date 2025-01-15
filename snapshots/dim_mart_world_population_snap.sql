@@ -1,11 +1,11 @@
-{% snapshot dim_mart_world_population %}
+{% snapshot dim_mart_world_population_snap %}
 
 {{ config(
     materialized='snapshot',
-    unique_key='scd_key',
+    unique_key='dim_cntry_key',
     strategy='check',
     invalidate_hard_deletes=False,
-    check_cols=['compare_key','effective_to'] 
+    check_cols=['compare_key'] 
 ) }}
 
 SELECT dim_cntry_key,
@@ -20,11 +20,7 @@ SELECT dim_cntry_key,
        med_age,
        urban_pop,
        world_share,
-       effective_from,
-       effective_to,
-       load_datetime,
-       scd_key,
        compare_key
-FROM {{ ref('wrk_mart_world_population_2') }}
+FROM {{ ref('wrk_mart_world_population') }}
 
 {% endsnapshot %}
