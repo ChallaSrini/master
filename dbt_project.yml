@@ -42,3 +42,5 @@ models:
     # Applies to all files under models/example/
     Dim:
       +materialized: table
+    views:
+      +materialized: view

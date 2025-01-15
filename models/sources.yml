@@ -17,5 +17,7 @@ sources:
         identifier: dim_mart_world_population
       - name: tgt_population_typ1
         identifier: dim_mart_world_population_typ1
+      - name: cntry_lkp
+        identifier: wrk_mart_country_code_lookup
 
 
