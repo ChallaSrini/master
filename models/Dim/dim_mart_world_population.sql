@@ -6,6 +6,7 @@
     on_schema_change='fail' 
 ) }}
 
+--delete+insert and append different incremental_strategy 
 SELECT dim_cntry_key,
        country,
        population,
