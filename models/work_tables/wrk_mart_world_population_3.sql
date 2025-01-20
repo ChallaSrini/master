@@ -12,7 +12,7 @@
       from {{ ref('wrk_mart_world_population') }} s1
 {% else %}
 {{ log("Source Relation doesn't exist: " ~ source("my_src","tgt_population_test").table, info=true) }}
-    select *,'extra_column' as ext_col,
+    select *,'extra_column' as ext_col
       from {{ ref('wrk_mart_world_population') }} s1
 {% endif %}
 
