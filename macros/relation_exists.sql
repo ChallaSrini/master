@@ -4,7 +4,7 @@
       database=relation_ref.database,
       schema=relation_ref.schema,
       identifier=relation_ref.table) -%}
-    {{ log("Checking if relation exists or not: "), info=true) }}
+    {{ log("Checking if relation exists or not: ", info=true) }}
     {% if relation is none %}
         {{ return(false) }}
     {% else %}
