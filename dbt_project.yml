@@ -40,7 +40,25 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_new_project:
     # Applies to all files under models/example/
-    Dim:
-      +materialized: table
+    models/Marts/Dim/SCD-1:
+      +materialized: incremental
+      +incremental_strategy: merge
+      +on_schema_change: fail
+    models/Marts/Dim/SCD-2:
+      +materialized: incremental
+      +incremental_strategy: merge
+      +uniq_key: scd_key
+      +merge_update_columns: ['effective_to']
+      +on_schema_change: fail
+    models/Marts/Dim/Profile:
+      +materialized: incremental
+      +incremental_strategy: append
+      +on_schema_change: fail   
+    models/Marts/Fact:
+      +materialized: incremental
+      +incremental_strategy: append
+      +on_schema_change: fail   
+    models/work_tables:
+      +materialized: table              
     views:
       +materialized: view

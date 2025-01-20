@@ -1,11 +1,3 @@
-{{ config(
-    materialized='incremental',
-    incremental_strategy='merge', 
-    unique_key='scd_key', 
-    merge_update_columns=['effective_to'],
-    on_schema_change='fail' 
-) }}
-
 --delete+insert and append different incremental_strategy 
 SELECT dim_cntry_key,
        country,
