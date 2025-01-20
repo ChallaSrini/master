@@ -11,9 +11,9 @@ SELECT dim_cntry_key,
        med_age,
        urban_pop,
        world_share,
-       effective_from,
-       effective_to,
-       load_datetime,
+       eff_cal_dim_id,
+       end_cal_dim_id,
+       inst_ts,
        scd_key,
        compare_key
 FROM {{ ref('wrk_mart_world_population_2') }}

@@ -13,4 +13,4 @@ SELECT s2.country_cd,
  FROM {{ ref('dim_mart_world_population') }} s1
  join {{ source("my_src","cntry_lkp")}} s2
    on s1.country=s2.country_name
-where s1.effective_to='9999-01-01'
+where s1.end_cal_dim_id='9999-01-01'
