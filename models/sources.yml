@@ -22,6 +22,8 @@ sources:
       - name: tgt_population_test
         identifier: dim_mart_world_population_test
       - name: tgt_fact_population
-        identifier: fact_mart_world_population        
+        identifier: fact_mart_world_population  
+      - name: src_prfl_churn
+        identifier: churn_modelling                
 
 
