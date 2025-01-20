@@ -14,7 +14,7 @@
 			s1.world_share,
 			s1.eff_cal_dim_id as batch_dt,
 			s1.eff_cal_dim_id as last_updt_dt,
-			coalese(s2.inst_ts,s1.inst_ts) as inst_ts
+			coalese(s2.inst_ts,s1.inst_ts) as inst_ts,
             s1.inst_ts as updt_ts,
 			s1.compare_key
        from {{ ref('wrk_mart_world_population') }} s1
@@ -39,7 +39,7 @@
 			s1.world_share,
 			s1.eff_cal_dim_id as batch_dt,
 			s1.eff_cal_dim_id as last_updt_dt,
-			s1.inst_ts as inst_ts
+			s1.inst_ts as inst_ts,
             s1.inst_ts as updt_ts,
 			s1.compare_key
        from {{ ref('wrk_mart_world_population') }} s1
