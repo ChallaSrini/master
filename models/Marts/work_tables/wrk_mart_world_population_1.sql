@@ -1,4 +1,5 @@
  {% if relation_exists(source("my_src", "tgt_population_typ1")) %}
+ {{ log("Target table existis so running this block- ", info=true) }}
  with wrld_scd1 as (
      select s1.dim_cntry_key,
 			s1.country,
@@ -27,6 +28,7 @@
          or (s1.compare_key != s2.compare_key) 
                      )
 {% else %}
+{{ log("As initial run considering it as direct insert- ", info=true) }}
  with wrld_scd1 as (
      select s1.dim_cntry_key,
 			s1.country,

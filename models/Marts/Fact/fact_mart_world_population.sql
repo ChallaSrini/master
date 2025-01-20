@@ -2,12 +2,10 @@
 {{ config(
     pre_hook= "delete from {{ this }} where batch_dt=cast('{{ var('buss_dt','9999-01-01') }}' as date) "
 ) }}
+{{ log("Executing pre_hook to delete batch date data in case of rerun ", info=true) }}
 {% else %}
-{{ config(
-    materialized="incremental"
-) }}
+{{ log("Initial run nothing to clean up .. direct load", info=true) }}
 {% endif %}
-{{ log("Checking if relation exists or not: ", info=true) }}
 SELECT dim_cntry_key,
        country,
        population,
