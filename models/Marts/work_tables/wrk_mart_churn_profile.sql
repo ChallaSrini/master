@@ -1,4 +1,5 @@
- select {{ md5_hash(['tenure','numofproducts','hascrcard','isactivemember','exited']) }} as dim_churn_prfl_key,
+ select distinct
+        {{ md5_hash(['tenure','numofproducts','hascrcard','isactivemember','exited']) }} as dim_churn_prfl_key,
         tenure,
         numofproducts,
         hascrcard,
