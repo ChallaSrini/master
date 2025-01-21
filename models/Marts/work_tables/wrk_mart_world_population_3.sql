@@ -11,6 +11,5 @@
             info=true,
         )
     }}
-    select *, 'extra_column' as ext_col
-    from {{ ref("wrk_mart_world_population") }} s1
+    select * from {{ ref('world_population_check') }} s1
 {% endif %}
