@@ -1,7 +1,6 @@
 {% macro log_status(results) %}
+    {{ log("========== Begin log status ==========", info=True) }}
     {% if execute %}
-        {{ log("========== Begin log status ==========", info=True) }}
-
         -- Get the invocation_id
         {% set invocation_id = invocation_id %}
 
@@ -23,7 +22,7 @@
         {%- endfor %}
 
 
-            {% set upd_query = "WITH results_cte AS (\n  SELECT * FROM (VALUES\n    " ~ rows | join(',\n    ') ~ "\n  ) AS t(invocation_id, unique_id, status,message)\n)
+        {% set upd_query = "WITH results_cte AS (\n  SELECT * FROM (VALUES\n    " ~ rows | join(',\n    ') ~ "\n  ) AS t(invocation_id, unique_id, status,message)\n)
             merge into  {{ env_var('DBT_AUDIT_SCHEMA') }}.dbt_run_dtl_info tgt
                  using results_cte src
                     on tgt.invocation_id = src.invocation_id 
@@ -32,11 +31,10 @@
                   then update 
                    set tgt.status =src.status,tgt.end_time = current_timestamp()   " %}
 		
-		    {{ log("Generated Merge Query:\n" ~ upd_query, info=True) }}
-            {{ return(upd_query) }}
+		{{ log("Generated Merge Query:\n" ~ upd_query, info=True) }}
+        {{ return(upd_query) }}
     {% else %}
         {{ return("-- No execution occurred (dry run).") }}
     {% endif %}
-
     {{ log("========== End log status ==========", info=True) }}
 {% endmacro %}
