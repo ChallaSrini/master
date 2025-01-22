@@ -1,5 +1,5 @@
 {% macro log_status(results) %}
-    {{ log("========== Begin log status ==========", info=True) }}
+    {{ log("========== Begin log status test==========" ~ execute, info=True) }}
     {% if execute %}
         -- Get the invocation_id
         {% set invocation_id = invocation_id %}
@@ -23,7 +23,7 @@
 
 
         {% set upd_query = "WITH results_cte AS (\n  SELECT * FROM (VALUES\n    " ~ rows | join(',\n    ') ~ "\n  ) AS t(invocation_id, unique_id, status,message)\n)
-            merge into  {{ env_var('DBT_AUDIT_SCHEMA') }}.dbt_run_dtl_info tgt
+            merge into "  ~ env_var('DBT_AUDIT_SCHEMA') ~".dbt_run_dtl_info tgt
                  using results_cte src
                     on tgt.invocation_id = src.invocation_id 
                    and tgt.component_name = src.unique_id

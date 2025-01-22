@@ -16,7 +16,7 @@ on-run-start:
 on-run-end:
   - "update {{ env_var('DBT_AUDIT_SCHEMA') }}.dbt_run_info set end_time=current_timestamp() where run_id = {{ var('run_id') }}"
   - "{{ log_status(results) }}"
-  - "{{ log_error(results) }}"
+  - "{{ log_errors(results) }}"
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
