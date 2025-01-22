@@ -2,7 +2,8 @@
 
 {% if relation_exists(source("my_src", "tgt_population_test")) %}
     {{ log("Source Relation: " ~ source("my_src", "tgt_population_test"), info=true) }}
-    select * from {{ ref('world_population_check') }}
+        select *
+      from {{ ref("wrk_mart_world_population") }} s1
 {% else %}
     {{
         log(
@@ -11,5 +12,6 @@
             info=true,
         )
     }}
-    select * from {{ ref('world_population_check') }} s1
+        select *
+      from {{ ref("wrk_mart_world_population") }} s1
 {% endif %}
