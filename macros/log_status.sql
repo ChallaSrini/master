@@ -9,7 +9,7 @@
         {{ log("Execution mode after DBT build: TRUE", info=True) }}
 		{% set status_rows = [] %}
 		{% for res in results -%}
-            {% do status_rows.append("('" ~ invocation_id ~ "', '" ~ res.node.unique_id.split('.')[-1] ~ "', '" ~ res.status ~ "', '"~ res.message[:500] ~"' )") %}
+            {% do status_rows.append("('" ~ invocation_id ~ "', '" ~ res.node.unique_id.split('.')[-1] ~ "', '" ~ res.status ~ "', '"~ res.message[:500]| replace("'", "") ~"' )") %}
 		{%- endfor %}
 		{% if status_rows %}
 			        {% set status_query = "WITH results_cte AS (\n  SELECT * FROM (VALUES\n    " ~ status_rows | join(',\n    ') ~ "\n  ) AS t(invocation_id, unique_id, status,message)\n)

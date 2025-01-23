@@ -26,7 +26,7 @@ and tgt.end_cal_dim_id = '9999-12-31'
 )
  
 select 
-emp_id
+emp_id,
 id,
 name,
 age,
