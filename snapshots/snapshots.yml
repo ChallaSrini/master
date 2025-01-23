@@ -1,0 +1,16 @@
+snapshots:
+  - name: dim_churn_model_snap
+    relation: source("my_src","src_prfl_churn")
+    config:
+      database: ic4_catalog
+      schema: wrk_training
+      unique_key: customerid
+      strategy: timestamp
+      updated_at: edh_rec_cre_ts
+      dbt_valid_to_current: CAST('9999-12-31' AS DATE)
+      snapshot_meta_column_names:
+        dbt_valid_from: eff_cal_dim_id
+        dbt_valid_to: end_cal_dim_id
+        dbt_scd_id: scd_key
+        dbt_updated_at: updt_ts
+        dbt_is_deleted: active_flg	 
