@@ -1,4 +1,10 @@
 {% macro log_status() %}
+    {{ log("Flag informaiton for validation" ~ flags, info=True)}}
+    {{ log("Flag informaiton for validation" ~ flags.WHICH, info=True)}}
+    {% if flags.WHICH !='run' and flags.WHICH !='snapshots' %}
+        {% set status_query= "select 'dummy'" %}
+        {{ return(status_query) }}
+    {% else %} 
     {% if execute %}
         {{ log("Execution mode after DBT build: TRUE", info=True) }}
 		{% set status_rows = [] %}
@@ -24,6 +30,7 @@
   {#  {{ log("Results metadata: " ~ results, info=True) }} #}
     {{ log("Results audit- Completed") }}
     {{ return(status_query) }}
+    {% endif %}
 {% endmacro %}
 
 
