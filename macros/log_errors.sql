@@ -10,7 +10,7 @@
 		{% set error_rows = [] %}
 		{% for res in results -%}
 			{%- if res.status == 'error' %}
-				{% do error_rows.append("('" ~ invocation_id ~ "', '" ~ res.node.unique_id.split('.')[-1] ~ "', '" ~ res.status ~ "', '"~ res.message[:500] ~"' )") %}
+				{% do error_rows.append("('" ~ invocation_id ~ "', '" ~ res.node.unique_id.split('.')[-1] ~ "', '" ~ res.status ~ "', '"~ res.message[:500]| replace("'", "") ~"' )") %}
 			{%- endif %}
 		{%- endfor %}
 		{% if error_rows %}
