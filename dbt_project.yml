@@ -11,7 +11,12 @@ dbt-cloud:
 # This setting configures which "profile" dbt uses for this project.
 profile: 'default'
 
+vars:
+  buss_dt: var('buss_dt', '9999-01-01')
+  run_id: var('buss_dt', '99990101')
+
 on-run-start:
+  - "{{ validate_required_params() }}"
   - "INSERT INTO {{ env_var('DBT_AUDIT_SCHEMA') }}.dbt_run_info select '{{invocation_id }}','{{ var('buss_dt') }}',{{ var('run_id') }},current_timestamp(),null;"
 on-run-end:
   - "update {{ env_var('DBT_AUDIT_SCHEMA') }}.dbt_run_info set end_time=current_timestamp() where run_id = {{ var('run_id') }}"
