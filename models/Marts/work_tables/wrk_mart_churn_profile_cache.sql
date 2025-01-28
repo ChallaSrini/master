@@ -1,6 +1,13 @@
+{#
 {{
 config (pre_hook="CACHE TABLE " ~ source('my_src','src_prfl_churn') ~ " OPTIONS ('storageLevel' 'MEMORY_AND_DISK')",
         post_hook="UNCACHE TABLE " ~ source('my_src','src_prfl_churn')
+       )
+}} 
+#}
+{{
+config (
+        location_root='abfss://workzone@ic4storagedlsgen2.dfs.core.windows.net/training/'
        )
 }}
  select distinct
