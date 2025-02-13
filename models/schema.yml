@@ -19,6 +19,8 @@ models:
             tests:
                 - unique
                 - not_null
+      config:
+        databricks_compute: Sql_compute                
     - name: wrk_mart_world_population_2
       description: "Initial model generated to have updates and inserts together"
       columns:
@@ -26,4 +28,9 @@ models:
             description: "The primary key for this table generated using natural key and bussiness date"
             tests:
                 - unique
-                - not_null                
+                - not_null 
+      config:
+        databricks_compute: Sql_compute 
+    - name: wrk_mart_churn_profile_cache
+      config:
+        databricks_compute: Intr_compute              
