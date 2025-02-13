@@ -76,7 +76,9 @@ models:
         +incremental_strategy: append
         +on_schema_change: fail
       work_tables:
-        +materialized: table                                
+          wrk_mart_churn_profile_cache:
+            databricks_compute: Intr_compute
+          +materialized: table                                
       views:
         +materialized: view
 snapshots:
