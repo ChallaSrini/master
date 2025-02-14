@@ -78,6 +78,7 @@ models:
       python_models:
           +materialized: table
           databricks_compute: Intr_compute
+          http_path: /sql/protocolv1/o/7201045960613942/0313-140603-sazhiqtq
       work_tables:
           wrk_mart_churn_profile_cache:
             databricks_compute: Intr_compute
