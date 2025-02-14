@@ -31,6 +31,4 @@ models:
                 - not_null 
       config:
         databricks_compute: Sql_compute 
-    - name: wrk_mart_churn_profile_cache
-      config:
-        databricks_compute: Intr_compute              
+             
