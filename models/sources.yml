@@ -3,6 +3,8 @@ sources:
   - name: my_src
     schema: wrk_training
     tables:
+      - name: src_lkp_exports
+        identifier: wrk_mart_lkp_exports
       - name: src_population
         identifier: world_population
         loaded_at_field: edh_rec_cre_ts

@@ -12,8 +12,8 @@ dbt-cloud:
 profile: 'default'
 
 vars:
-  buss_dt: var('buss_dt', '9999-01-01')
-  run_id: var('run_id', '99990101')
+  buss_dt: '9999-01-01'
+  run_id: '99990101'
 
 on-run-start:
   - "{{ validate_required_params() }}"
@@ -75,6 +75,9 @@ models:
         +materialized: incremental
         +incremental_strategy: append
         +on_schema_change: fail
+      python_models:
+          +materialized: table
+          databricks_compute: Intr_compute
       work_tables:
           wrk_mart_churn_profile_cache:
             databricks_compute: Intr_compute
