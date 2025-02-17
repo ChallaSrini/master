@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: wrk_mart_explode_interests
+    config:
+      materialized: table
+      http_path: "{{ env_var('DBT_HTTP_PATH') }}"
