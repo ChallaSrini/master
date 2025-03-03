@@ -6,7 +6,7 @@ models:
       description: "Initial model to load Type-2 implementaion using Incremental Load"
       columns:
           - name: scd_key
-            description: "The primary key for this table generated using natural key and bussiness date .."
+            description: "The primary key for this table generated using natural key of table and bussiness date"
             tests:
                 - unique
                 - not_null
