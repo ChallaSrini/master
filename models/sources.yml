@@ -13,7 +13,7 @@ sources:
             count: 365
             period: day
           warn_after:
-            count: 365
+            count: 2
             period: day         
       - name: tgt_population
         identifier: dim_mart_world_population
