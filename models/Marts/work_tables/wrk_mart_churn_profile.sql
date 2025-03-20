@@ -1,6 +1,4 @@
-{{ config(
-    pre_hook="!sqlfluff lint models/ --dialect databricks --config .sqlfluff"
-) }}
+
 
 
 select distinct
