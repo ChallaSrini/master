@@ -79,7 +79,7 @@ models:
       work_tables:
           wrk_mart_churn_profile_cache:
             databricks_compute: Intr_compute
-          +materialized: table                                
+          +materialized: table 
       views:
         +materialized: view
 snapshots:

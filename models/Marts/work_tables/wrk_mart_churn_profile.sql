@@ -8,3 +8,4 @@ select distinct
     cast('{{ var("buss_dt",'9999-01-01') }}' as date) as eff_cal_dim_id,
     current_timestamp() as inst_ts
 from {{ source("my_src","src_prfl_churn") }}
+
