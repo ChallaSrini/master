@@ -13,7 +13,7 @@ SELECT dim_cntry_key,
        world_share,
        eff_cal_dim_id,
        end_cal_dim_id,
-       inst_ts,,
+       inst_ts,
        scd_key,
        compare_key
 FROM {{ ref('wrk_mart_world_population_2') }}
